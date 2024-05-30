@@ -8,6 +8,8 @@
 <html lang="en">
     <!-- head/header -->
     <?php 
+        include_once('./_comp/session_start.php');
+
         include_once('./_comp/head.php');
         include_once('./_comp/header.php');
     ?>

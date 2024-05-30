@@ -15,7 +15,9 @@ var speed = 3;
 // on start game button pressed
 function on_start_button(){
     // test if form is filled out
-    if (test_input_form()){
+    //if (test_input_form()){
+    if (true){
+        console.log("g");
         if (animal_spawner.children.length == 0){
             animal_counter.style.display = "block";  // unhide score
             create_animal();

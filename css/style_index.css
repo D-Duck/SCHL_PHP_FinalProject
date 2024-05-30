@@ -96,13 +96,34 @@ header{
     background-color: rgba(255, 255, 255, 0.50);
 }
 
+#login_btn_index{
+    z-index: 1000;
+    position:absolute;
+    margin-top: 0;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    color: white;
+    font-size: 25px;
+    border-radius: 100px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    justify-content: center;
+}a{
+    text-decoration: none;
+}
+
+
 /* Section */
 section a{
     color: lightseagreen;
 }
 
 /* Phone */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     header{
         height: calc(40vw + 8em);
     }.underline{
@@ -126,5 +147,8 @@ section a{
     }#link_T{
         top: calc(40vw + 4.5em);
         left: 10%;
+    }#login_btn_index{
+        margin-top: 15%;
+        width: 150px;
     }
 }

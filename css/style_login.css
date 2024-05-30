@@ -1,9 +1,13 @@
 *{
     margin: 0;
     padding: 0;
+}
+html {
+    height: 100%;
 }body{
+    min-height: 100%;
     overflow-x: hidden;
-    background: linear-gradient(180deg, rgb(0, 158, 61) 0%, rgb(36, 81, 42) 100%);
+    background: linear-gradient(180deg, rgb(0, 86, 42) 0%, rgb(0, 157, 255) 100%);
 }::-webkit-scrollbar-track {
     background: #fff;
 }::-webkit-scrollbar-thumb {
@@ -13,18 +17,20 @@
 }
 
 /* Section */
+strong{
+    color: white !important;
+}
 .section_special{
-    background-color: rgb(32, 56, 26);
+    background-color: rgb(0, 157, 147);
 }.section_special p{
     width: 75%;
     text-align: center;
     margin: 20px auto 20px auto;
 }.section_special button{
     position: relative;
-    width: 200px; height: 75px;
-    font-size: 25px;
+    width: 150px; height: 50px;
     border-radius: 50px;
-    margin: calc(50% - 100px);
+    margin: calc(50% - 75px);
     margin-top: 0; margin-bottom: 0;
 }.section_special button:hover{
     background-color: rgb(167, 167, 167);
@@ -39,6 +45,11 @@
     margin-left: 2%; margin-bottom: 25px;
     display: flex;
     text-align: center;
+    display: flex;
+    justify-content: center;
+}.input_field{
+    float: left;
+    width: 200px;
 }.input_field input{
     border: transparent solid 2px;
     margin-bottom: 5px;
@@ -55,40 +66,9 @@
     position: relative;
     width: 96%;
     margin: auto; margin-bottom: 25px;
+}.section_special li{
+    width: 50%;
 }
-
-/* Animals */
-#animal_counter{
-    position: fixed;
-    bottom: 5px; left: 5px;
-    height: 75px; width: 200px;
-    background-color: white;
-    border: black solid 3px;
-    border-radius: 50px;
-    display: none;
-}#animal_counter h2{
-    color: black;
-    width: 100%; height: 100%;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 40px;
-}#animal_spawner{
-    width: 100%;
-}.animal{
-    -webkit-user-drag: none;
-    pointer-events:painted;
-    position: absolute;
-    height: 10vw;
-}.animal:hover{
-    cursor: url("../img/Ecosystem/reticle.png") 25 25, auto;
-}strong{
-    color: blue;
-}#leaderboard_btn{
-    height: 25px;
-    width: 200px;
-    font-size: 12px;
-}
-
 
 /* Phone */
 @media screen and (max-width: 1200px) {

@@ -65,7 +65,7 @@
 
 
 /* Phone */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     #header_container{
         border: 0;
         background-color: transparent;

@@ -1,4 +1,6 @@
 body{
+    height:100%;
+    min-height: 100% !important;
     padding: 0;
     margin: 0;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -39,6 +41,23 @@ header{
     background-color: rgba(0, 0, 0, 0.3);
 }#main_page img{
     height: 100%;
+}#main_login{
+    border: white solid 3px;
+    float: right;
+    height: 100%;
+    width: 200px;
+    background-color: transparent;
+    border-radius: 100px;
+}#main_login:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+}#main_login img{
+    height: 100%;
+}#main_login a{
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #header_hamburger{
     height: 50px;
@@ -54,6 +73,17 @@ header{
     display: flex;
     text-decoration: none;
 }#main_page h1{
+    display: flex;
+    align-items: center;
+    font-size: 25px;    
+    color: white;
+    margin-left: 10px;
+    padding: 0;
+}#main_login a{
+    height: 100%;
+    display: flex;
+    text-decoration: none;
+}#main_login h1{
     display: flex;
     align-items: center;
     font-size: 25px;    
@@ -96,7 +126,7 @@ section{
     position: relative;
     background-color: transparent;
     width: 50%;
-    min-width: calc(800px - 2%);
+    min-width: calc(1200px - 2%);
     color: white;
 }section h1{
     padding-top: 50px;
@@ -135,7 +165,7 @@ section{
     border-radius: 5px;
     border-color: white;
 }section a{
-    color: blueviolet;
+    color: rgb(0, 255, 234);
     text-decoration: none;
 }.section_table table{
     color: black;
@@ -195,7 +225,7 @@ section{
 }.section_text p{
     margin: 0;
 }.section_text strong{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 254, 254);
 }
 
 /* Footer */
@@ -222,11 +252,13 @@ footer{
     text-decoration:none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     .section_img_2{
         width: 98%;
     }
     #main_page h1{
+        margin: 0 0 0 10px;
+    }#main_login h1{
         margin: 0 0 0 10px;
     }#header_container{
         float: left;
@@ -266,7 +298,7 @@ footer{
 }
 
 /* header */
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 1200px) {
     /* hamburger */
     #header_container{
         display:none;

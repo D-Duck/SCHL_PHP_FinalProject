@@ -7,7 +7,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <!-- head/header -->
-    <?php 
+    <?php
+        include_once('./_comp/session_start.php');
+
         include_once('./_comp/head.php');
         include_once('./_comp/header.php');
     ?>
@@ -36,23 +38,14 @@
         <div class="section_text section_background section_special">
             <h2>Hunting Season</h2>
             <p>Don't let any endangered animal escape this page, you will be given a gun after you press START and the animals will be released one by one. But be careful each animal will get faster and faster</p>
+            <p id="text_warning">You need to be logged in to play or see leaderboard.</p>
             <form action="javascript: void(0);">
-                <div class="section_special_input">
-                    <div class="input_field">
-                        <label for="input_name">Name</label>
-                        <input id="input_name" type="text" name="input_name" placeholder="Name">
-                    </div>
-                    <div class="input_field">
-                        <label for="input_email">Email</label>
-                        <input id="input_email" type="email" name="input_email" placeholder="YourMail@mail.com">
-                    </div>
-                    <div class="input_field ">
-                        <label id="input_terms_text"  for="input_terms">You agree with out rerms and conditions</label>
-                        <input id="input_terms" type="checkbox"  name="input_terms">
-                    </div>
-                </div>
-                <button onclick="on_start_button();" type="submit">START</button>
+                <?php
+                   if (isset($_SESSION['logedin']) && $_SESSION['logedin'] == true)
+                        echo "<button onclick=\"on_start_button();\" type=\"submit\">START</button>"
+                ?>
             </form>
+            <button id="leaderboard_btn" onclick="" type="submit">LEADERBORD</button>
             <div id="score_table"></div>
         </div>
     </section>

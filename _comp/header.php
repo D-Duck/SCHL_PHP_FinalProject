@@ -11,6 +11,19 @@
                     <h1>Main Page</h1>
                 </a>
             </div>
+            <div id="main_login">
+                <a href="./login.php">
+                    <p>
+                    <?PHP
+                    if ($_SESSION["logedin"] == "true") {
+                        echo("Loged In");
+                    }else{
+                        echo("Log In");
+                    }
+                    ?>
+                    </p>
+                </a>
+            </div>
             <div id="header_hamburger">
                 <img src="./img/hamburger.png" alt="hamburger" onclick="on_hamburger_click()">
             </div>

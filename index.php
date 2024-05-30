@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php   
+    include_once('./_comp/session_start.php');
+
     $href = "./css/style_index.css";
     $title = "EID - Earth Is Dying";
     include_once('./_comp/head.php');
 ?>
 <body>
     <!-- Header -->
-    <header> 
+    <header>
+        <script>console.log(<?= $_SESSION["logedin"] ?>);</script>
         <img id="EarthStill" src="./img/Earth/EarthStill.png" alt="Earth">
         <video autoplay muted loop id="EarthVid">
             <source src="./img/Earth/Earth.mp4" type="video/mp4">
@@ -26,6 +29,7 @@
             <a id="link_R" class="link" href="./rising_sea_levels.php">Rising sea levels</a>
             <a id="link_T" class="link" href="./dwindleing_ecosystems.php">Dwindleing ecosystems</a>
         </nav>
+        <a href="./login.php"><div id="login_btn_index"><h5>Log In</h5></div></a>
     </header>
 
     <!-- Section -->
