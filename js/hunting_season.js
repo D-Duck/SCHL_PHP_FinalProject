@@ -1,5 +1,6 @@
 var animal_counter = document.getElementById("animal_counter");
 var counter_text = animal_counter.children[0];
+var storage = document.getElementById("submit_score");
 var animal_spawner = document.getElementById("animal_spawner");
 
 var name_ = document.getElementById("input_name");
@@ -14,22 +15,18 @@ var speed = 3;
 
 // on start game button pressed
 function on_start_button(){
-    // test if form is filled out
-    //if (test_input_form()){
-    if (true){
-        console.log("g");
-        if (animal_spawner.children.length == 0){
-            animal_counter.style.display = "block";  // unhide score
-            create_animal();
-            speed = 3;
-            counter_text.textContent = "0";  // set score to 0
-            animal_counter.style.backgroundColor = "white";
-        }
+    if (animal_spawner.children.length == 0){
+        animal_counter.style.display = "block";  // unhide score
+        create_animal();
+        speed = 3;
+        counter_text.textContent = "0";  // set score to 0
+        animal_counter.style.backgroundColor = "white";
     }
 }
 
 // on end game button pressed
 function on_score_button(){
+    storage.value = String(counter_text.textContent)
     animal_counter.style.display = "none";  //hide score
     animal_spawner.children[0].remove();  // delete remaining animals
     add_score_entry()
@@ -95,40 +92,6 @@ function update_animal(){
     }
 }
 
-// function to test form
-function test_input_form(){
-    let out = true;
-
-    // test for name
-        if (name_.value.length > 2){
-            name_.style.borderColor = "white";
-        }else{
-            out = false;
-            name_.style.borderColor = "red";
-        }
-    // test for mail    
-    if (mail_.value.length > 8 && mail_.value.includes("@") && mail_.value.includes(".")){
-        mail_.style.borderColor = "white";
-    }else{
-        out = false;
-        mail_.style.borderColor = "red";
-    }
-    // test for terms and conditions
-    if (terms_.checked){
-        term_text.style.color = "white";
-    }else{
-        out = false;
-        term_text.style.color = "red";
-    }
-
-    // check if out is false
-    if (!out) {
-        setTimeout(alertt, 10)
-    }
-
-    return out;
-}
-
 // It's in a separate function due to some visual misshaps
 function alertt(){
     alert("Some fields are incorrect, they are highlited in red.")
@@ -136,9 +99,7 @@ function alertt(){
 
 // add score to page when game over
 function add_score_entry(){
-    let text = document.createElement("p");
-    text.textContent = `${name_.value} : ${parseInt(counter_text.textContent)}`
-    score_table.appendChild(text)
+    document.getElementById("submit_score").click();
 }
 
 // set interval for update function

@@ -226,6 +226,15 @@ section{
     margin: 0;
 }.section_text strong{
     color: rgb(255, 254, 254);
+}#create_acc_btn{
+    height: 30px;
+}
+#submit_score{
+    color: transparent;
+    border: transparent;
+    background-color: transparent;
+}#wrning{
+    color: red;
 }
 
 /* Footer */

@@ -39,16 +39,31 @@
             <h2>Hunting Season</h2>
             <p>Don't let any endangered animal escape this page, you will be given a gun after you press START and the animals will be released one by one. But be careful each animal will get faster and faster</p>
             <p id="text_warning">You need to be logged in to play or see leaderboard.</p>
-            <form action="javascript: void(0);">
-                <?php
-                   if (isset($_SESSION['logedin']) && $_SESSION['logedin'] == true)
-                        echo "<button onclick=\"on_start_button();\" type=\"submit\">START</button>"
-                ?>
-            </form>
-            <button id="leaderboard_btn" onclick="" type="submit">LEADERBORD</button>
+            <?php if($logged_in): ?>
+                <form action="javascript: void(0);">
+                    <button onclick="on_start_button();" type="submit">START</button>
+                </form>
+            <?php else: ?>
+                <a href="./login.php"><button>Log In</button></a>
+            <?php endif; ?>
+                
+            <a href="./dwindleing_ecosystems_leaderbord.php"><button id="leaderboard_btn">LEADERBORD</button></a>
             <div id="score_table"></div>
         </div>
     </section>
+    
+    <form method="POST">
+        <input id="submit_score" type="submit" name="submit_score", value="s">
+    </form>           
+    <?php   
+        if(isset($_POST['submit_score'])){
+            $name = $_SESSION['name'];
+            $score = $_POST["submit_score"];
+            $dbs = new Score();
+            $dbs->add($name,$score);
+        }
+    ?>
+
 
     <!-- footer -->
     <?php include_once('./_comp/footer.php');?>

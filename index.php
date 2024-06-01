@@ -6,6 +6,8 @@
     $href = "./css/style_index.css";
     $title = "EID - Earth Is Dying";
     include_once('./_comp/head.php');
+
+    $logged_in = isset($_SESSION['logedin']) && $_SESSION['logedin'] === true;
 ?>
 <body>
     <!-- Header -->
@@ -29,7 +31,11 @@
             <a id="link_R" class="link" href="./rising_sea_levels.php">Rising sea levels</a>
             <a id="link_T" class="link" href="./dwindleing_ecosystems.php">Dwindleing ecosystems</a>
         </nav>
-        <a href="./login.php"><div id="login_btn_index"><h5>Log In</h5></div></a>
+        <?php if($logged_in): ?>
+            <a href="./login.php"><div id="login_btn_index"><h5><?php echo $_SESSION['name']; ?></h5></div></a>
+        <?php else: ?>
+            <a href="./login.php"><div id="login_btn_index"><h5>Log In</h5></div></a>
+        <?php endif; ?>
     </header>
 
     <!-- Section -->

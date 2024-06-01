@@ -1,4 +1,11 @@
-<?php list($a, $b, $c) = $links; ?>
+<?php 
+    list($a, $b, $c) = $links; 
+    require("./class/Database.php");
+    require("./class/User.php");
+    require("./class/Score.php");
+
+    $logged_in = isset($_SESSION['logedin']) && $_SESSION['logedin'] === true;
+?>
 
 <!DOCTYPE html>
 <html lang="en">    
@@ -13,15 +20,11 @@
             </div>
             <div id="main_login">
                 <a href="./login.php">
-                    <p>
-                    <?PHP
-                    if ($_SESSION["logedin"] == "true") {
-                        echo("Loged In");
-                    }else{
-                        echo("Log In");
-                    }
-                    ?>
-                    </p>
+                    <?php if($logged_in): ?>
+                        <p><?php echo $_SESSION['name']; ?></p>
+                    <?php else: ?>
+                        <p>Log In</p>
+                    <?php endif; ?>
                 </a>
             </div>
             <div id="header_hamburger">
