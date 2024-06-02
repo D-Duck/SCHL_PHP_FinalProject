@@ -1,63 +1,46 @@
 <?php
 class User extends Database {
-    
     private $db;
 
     public function __construct() {
-        $this->db = $this->connect();
-    }
+        $this->db = $this->connect();}
+
     public function getUserNameByMail($mail) {
         try {
-            $stmt = $this->connection->prepare("SELECT name FROM user WHERE mail = :mail");
-            $stmt->bindParam(':mail', $mail, PDO::PARAM_STR);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result ? $result->name : "ERR"; // Return the name or null if not found
-        } catch(PDOException $e) {
-            die("Query error: " . $e->getMessage());
-        }
-      }
+            $dbs = $this->connection->prepare("SELECT name FROM user WHERE mail = :mail");
+            $dbs->execute([':mail' => $mail]);
+            $result = $dbs->fetch(PDO::FETCH_ASSOC);
+            return $result['name'] ?? 'ERR';
+        } catch(PDOException $e) {die($e->getMessage());}}
+
     public function login($mail, $password) {
         try {
-            $data = array('mail' => $mail, 'pass' => $password);
-            $sql = "SELECT * FROM user WHERE mail = :mail AND pass = :pass";
-            $query_run = $this->db->prepare($sql);
-            $query_run->execute($data);
+            $dbs = $this->db->prepare("SELECT * FROM user WHERE mail = :mail AND pass = :pass");
+            $dbs->execute(array('mail' => $mail, 'pass' => $password));
 
-            if ($query_run->rowCount() == 1) {
+            if ($dbs->rowCount() == 1) {
                 $_SESSION['logedin'] = true;
                 $_SESSION['name'] = $this->getUserNameByMail($mail);
                 return true;
-            } else {
-                return false;
-            }
-        } catch(PDOException $e) {
-            echo "Login Error: " . $e->getMessage();
-        }
-    }
-    public function register($name, $email, $password){
+            }else{return false;}
+        } catch(PDOException $e) {echo $e->getMessage();}}
+
+    public function register($name, $mail, $password){
         try{
-            $check_sql = "SELECT * FROM user WHERE mail = :mail";
-            $check_query = $this->db->prepare($check_sql);
-            $check_query->execute(['mail' => $email]);
+            // check if mail already exists
+            $dbs = $this->db->prepare("SELECT * FROM user WHERE mail = :mail");
+            $dbs->execute(['mail' => $mail]);
 
-            if($check_query->rowCount() > 0){
-                return false;
-            }
+            if($dbs->rowCount() > 0){
+                return false;}
+            
+            // creating new user
+            $dbs = $this->db->prepare("INSERT INTO user (name, pass, mail) VALUES (:name, :pass, :mail)");
+            $dbs->execute(array('name' => $name, 'pass' => $password, 'mail' => $mail));
 
-            $data = array('name' => $name, 'pass' => $password, 'mail' => $email);
-            $sql = "INSERT INTO user (name, pass, mail) VALUES (:name, :pass, :mail)";
-            $query_run = $this->db->prepare($sql);
-            $query_run->execute($data);
-
-            if($query_run->rowCount() == 1) {
+            if($dbs->rowCount() == 1) {
                 return true;
-            } else {
-                return false;
-            }
-        } catch(PDOException $e) {
-            return "Registration Error: " . $e->getMessage();
-        }
-    }
+            }else{
+                return false;}
+        } catch(PDOException $e) {echo $e->getMessage();}}
 }
-?>

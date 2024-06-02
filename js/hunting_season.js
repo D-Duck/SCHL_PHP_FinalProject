@@ -83,18 +83,13 @@ function update_animal(){
             if (x > animal_spawner.offsetWidth){
                 child.remove();
                 animal_counter.style.backgroundColor = "red";
-                add_score_entry()
+                add_score_entry();
             }
         }
 
         child.style.left = String(x)  + "px";
         index++;
     }
-}
-
-// It's in a separate function due to some visual misshaps
-function alertt(){
-    alert("Some fields are incorrect, they are highlited in red.")
 }
 
 // add score to page when game over

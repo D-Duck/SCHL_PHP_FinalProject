@@ -17,7 +17,7 @@
     <!-- Secion -->
     <section>
         <div id="login_sec" class="section_text section_background section_special">
-            <h1>Create Account</h1>
+            <h1>Register</h1>
             <p>By creating an account, you agree to our Terms of Service and Privacy Policy. You acknowledge that you are providing accurate information and consent to receive communications from us. Your data will be securely stored and will not be shared with third parties without your consent, except as required by law. If you have any questions or concerns, please contact our support team.</p>
             <div id="score_table"></div>
             <form method="POST">
@@ -35,7 +35,7 @@
                         <input id="input_password" type="text" name="input_password" placeholder="Password123">
                     </div>
                 </div>
-                <input type="submit" value="Create Account" name="user_login" >
+                <input type="submit" value="Register" name="user_login" >
             </form>
             <a href="./login.php"><button id="create_acc_btn">Log In</button></a>
             <?php   
@@ -44,7 +44,7 @@
                     $email = $_POST['input_email'];
                     $password = $_POST['input_password'];
                     if (!$name == "" and !$email == "" and !$password == ""){
-                        if (!$name == "ADMIN"){
+                        if ($name != "ADMIN"){
                             $user = new User();
                             $login_success = $user->register($name,$email,$password);
                             if ($login_success == true){

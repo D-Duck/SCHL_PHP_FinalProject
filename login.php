@@ -34,7 +34,7 @@
                     </div>
                     <input type="submit" value="Log In" name="user_login" >
                 </form>
-                <a href="./create_account.php"><button id="create_acc_btn">Create Acount</button></a>
+                <a href="./create_account.php"><button id="create_acc_btn">Register</button></a>
                 <?php   
                     if(isset($_POST['user_login'])){
                         $email = $_POST['input_email'];
