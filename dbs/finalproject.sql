@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2024 at 01:18 AM
+-- Generation Time: Jun 02, 2024 at 06:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `score`
+--
+
+CREATE TABLE `score` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `score` int(11) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -39,11 +52,19 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `pass`, `mail`) VALUES
-(0, 'ADMIN', 'admin', 'admin@admin.admin');
+(0, 'ADMIN', 'admin', 'admin@admin.admin'),
+(12, 'Mail', 'mail', 'mail@mail.mail'),
+(14, 'separ', '123', '123@gmail.com');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `score`
+--
+ALTER TABLE `score`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -56,10 +77,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `score`
+--
+ALTER TABLE `score`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
